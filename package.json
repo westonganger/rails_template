@@ -1,0 +1,29 @@
+{
+  "name": "rails_template",
+  "private": true,
+  "version": "0.1.0",
+  "dependencies": {
+    "@rails/actioncable": "^6.0.0-alpha",
+    "@rails/activestorage": "^6.0.0-alpha",
+    "@rails/ujs": "^6.0.0-alpha",
+    "@rails/webpacker": "^4.0.2",
+    "turbolinks": "^5.2.0",
+    "autosize": "*",
+    "jquery": "*"
+  },
+  "unusedDependencies": {
+    "zepto": "*",
+    "x-data-spreadsheet": "git+https://github.com/myliang/x-spreadsheet.git",
+    "chosen": "*",
+    "chosen-bootstrap-theme": "*",
+    "jquery-enable-disable": "*",
+    "jquery.are-you-sure": "*",
+    "input-autogrow": "*",
+    "input-case-enforcer": "*",
+    "select-sync": "*",
+    "rearmed-js": "*"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.3.1"
+  }
+}
