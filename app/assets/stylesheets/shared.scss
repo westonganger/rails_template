@@ -1,0 +1,26 @@
+/*
+svg text{
+  /* center align all svg placeholders */
+  text-anchor: middle; 
+}
+*/
+
+.text-underline{
+  text-decoration: underline !important;
+}
+
+.flex-center-all{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.flex-center-y{
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.flex-center-x{
+  display: inline-flex !important;
+  justify-content: center !important;
+}

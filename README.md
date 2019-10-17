@@ -3,10 +3,7 @@
 ### Add Stimulus - simple data binding
 `bundle exec rails webpacker:install:stimulus`
 
-### Add Ember - going all in on JS
-`bundle exec rails webpacker:install:vue`
-
-### Add Vue.js - if you somehow dont wanna use Ember
+### Add Vue.js
 `bundle exec rails webpacker:install:vue`
 
 

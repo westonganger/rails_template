@@ -1,14 +1,6 @@
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
-
-require("@rails/ujs").start()
-require("turbolinks").start()
-require("@rails/activestorage").start()
-require("channels")
-
-global.$ = global.jQuery = require('jquery');
+//= require jquery
+//= require rails-ujs
+//= require turbolinks
 
 // https://github.com/VodkaBears/Vide/issues/183#issuecomment-365603849
 jQuery.fn.load = function(callback) { $(window).on("load", callback) };
@@ -21,17 +13,6 @@ $(document).on('turbolinks:load',  function(){
   $("a[href^='#'], a[href^='/#'], a[href^='tel'], a[href^='mailto']").attr('data-turbolinks','false');
 
   $('form').prop('autocomplete','off');
-});
-
-$(document).on('click','a[href^="#"]', function(event){
-  var target = $($(this).attr('href'));
-
-  if(target.length){
-    event.preventDefault();
-    $('html, body').animate({scrollTop: target.offset().top-25}, {duration: 1000, easing: ''});
-  }
-
-  $("#navbar-collapse").collapse('hide');
 });
 
 $(document).on("click", "a.slow, button.slow", function(){

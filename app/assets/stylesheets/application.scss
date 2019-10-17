@@ -1,0 +1,32 @@
+@import "./shared.scss";
+@import "./utility.scss";
+@import "./bootstrap_4_custom.scss";
+
+
+
+html, body{
+  height: 100%; // required for sticky footer
+}
+
+body.has-sticky-footer{
+  display: flex;
+  flex-direction: column;
+
+  #page-content{
+    flex-shrink: 0;
+    margin-top: var(--navbar-height);
+  }
+  
+  //footer,
+  .footer-section{
+    margin-top: auto; // required for sticky footer, https://getbootstrap.com/docs/4.3/examples/sticky-footer-navbar/
+  }
+}
+
+.full-height{
+  height: calc(100vh - var(--navbar-height));
+}
+
+.side-nav{
+  min-width: var(--side-nav-min-width);
+}
