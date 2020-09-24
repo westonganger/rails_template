@@ -1,77 +1,107 @@
-# config valid only for Capistrano 3.1
-#lock '3.2.1'
+STDOUT.sync = true
+set :stages, %w(production)
+set :default_stage, 'production'
 
-set :scm, nil # to deploy from local files
+require 'mina/bundler'
+require 'mina/rails'
+require 'mina/git'
+require 'mina/rbenv'
+require 'mina/puma'
+require "mina_sidekiq/tasks"
+require 'mina/logs'
+require 'mina/multistage'
 
-set :application, 'two_becoming_one'
-set :repo_url, 'git@gitlab.com:westonganger/two_becoming_one.git'
-#set :repo_url, `git remote -v | grep origin | grep fetch`.split(' ')[1]
+set :asset_dirs, fetch(:asset_dirs, []).push('app/javascript')
+set :shared_dirs, fetch(:shared_dirs, []).push('log', 'public/uploads', 'public/packs', 'node_modules', 'storage')
+set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/application.yml')
 
-# Default branch is :master
-# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+set :puma_config, ->{ "#{fetch(:current_path)}/config/puma.rb" }
+set :sidekiq_pid, ->{ "#{fetch(:shared_path)}/tmp/pids/sidekiq.pid" }
 
-# Default deploy_to directory is /var/www/my_app
-set :deploy_to, "/usr/share/nginx/html/#{fetch(:application)}/"
-
-set :rails_env, "production"
-set :user, "weston"
-set :deploy, 'weston@westonganger.com' # no thats not an email address, its user@server.com
-set :format, :pretty
-set :log_level, :debug
-
-#set :rbenv_type, :user
-#set :rbenv_ruby, RUBY_VERSION
-set :rbenv_type, :system
-set :rbenv_custom_path, "/usr/lib/rbenv"
-set :rbenv_ruby, "#{File.read('.ruby-version').strip}#{"-#{File.read('.ruby-variant').strip}" if File.exist?('.ruby-variant')}"
-
-set :pg_database, fetch(:application)
-#set :pg_user, fetch(:application)
-#set :pg_ask_for_password, true
-
-set :whenever_identifier, ->{"#{fetch(:application)}_#{fetch(:stage)}"}
-
-# Default value for :pty is false
-# set :pty, true
-
-set :linked_files, %w{config/database.yml}
-#set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-
-set :keep_releases, 3
-
-namespace :deploy do
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      #execute "sudo service nginx restart"
-      execute :sudo, "passenger-config restart-app --ignore-app-not-running #{deploy_to}"
-    end
-  end
-  after :publishing, :restart
-
-  #before :deploy, :setup ### INSTEAD RUN cap production deploy:setup for first time install
-  
-  after :finishing, 'sitemap:create', 'deploy:cleanup'
+task :remote_environment do
+  invoke :'rbenv:load'
 end
 
-namespace :rails do
-  # Usage Notes: cap production rails:console - http://www.pablocantero.com/blog/2014/06/16/opening-a-rails-console-with-capistrano-3/
-  desc 'Open a rails console `cap [staging] rails:console [server_index default: 0]`'
-  task :console do
-    on roles(:app) do |server|
-      server_index = ARGV[2].to_i
+task :setup do
+  command %[mkdir -p "#{fetch(:shared_path)}/tmp/sockets"]
+  command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/tmp/sockets"]
 
-      return if server != roles(:app)[server_index]
+  command %[mkdir -p "#{fetch(:shared_path)}/tmp/pids"]
+  command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/tmp/pids"]
 
-      puts "Opening a console on: #{host}...."
+  command %[mkdir -p "#{fetch(:shared_path)}/log"]
+  command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/log"]
 
-      #cmd = "ssh #{server.user}@#{host} -t 'export PATH='$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH' && cd #{fetch(:deploy_to)}current && RAILS_ENV=#{fetch(:rails_env)} bundle exec rails console'"
-      cmd = "ssh #{server.user}@#{host} -t 'cd #{fetch(:deploy_to)}current && RAILS_ENV=#{fetch(:rails_env)} bundle exec rails console'"
+  command %[mkdir -p "#{fetch(:shared_path)}/public/uploads"]
+  command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/public/uploads"]
 
-      puts cmd
+  command %[mkdir -p "#{fetch(:shared_path)}/public/packs"]
+  command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/public/packs"]
 
-      exec cmd
+  command %[mkdir -p "#{fetch(:shared_path)}/node_modules"]
+  command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/node_modules"]
+
+  command %[mkdir -p "#{fetch(:shared_path)}/storage"]
+  command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/storage"]
+
+  command %[mkdir -p "#{fetch(:shared_path)}/config"]
+  command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/config"]
+
+  command %[touch "#{fetch(:shared_path)}/config/application.yml"]
+  command %[echo "-----> Be sure to edit '#{fetch(:shared_path)}/config/application.yml'"]
+
+  command %[touch "#{fetch(:shared_path)}/config/database.yml"]
+  command %[echo "-----> Be sure to edit '#{fetch(:shared_path)}/config/database.yml'"]
+end
+
+desc "Clear bootsnap cache"
+task :clear_bootsnap do
+  command %[echo "Clear bootsnap cache..."]
+  command %[rm -rf "#{fetch(:shared_path)}/tmp/bootsnap-*"]
+end
+
+desc "Deploys the current version to the server."
+task :deploy do
+  command %[echo "-----> Server: #{fetch(:domain)}"]
+  command %[echo "-----> Path: #{fetch(:deploy_to)}"]
+  command %[echo "-----> Branch: #{fetch(:branch)}"]
+
+  deploy do
+    invoke :'git:clone'
+    invoke :'deploy:link_shared_paths'
+    invoke :'bundle:install'
+    invoke :'rails:db_migrate'
+    invoke :clear_bootsnap
+    invoke :'rails:assets_precompile'
+    invoke :'deploy:cleanup'
+
+    on :launch do
+      invoke :'rbenv:load'
+      invoke :'sidekiq:quiet'
+      invoke :'puma:smart_restart'
+      invoke :'sidekiq:restart'
+    end
+  end
+end
+
+desc "Prepare the first deploy on server."
+task :first_deploy do
+  command %[echo "-----> Server: #{fetch(:domain)}"]
+  command %[echo "-----> Path: #{fetch(:deploy_to)}"]
+  command %[echo "-----> Branch: #{fetch(:branch)}"]
+
+  deploy do
+    invoke :'git:clone'
+    invoke :'deploy:link_shared_paths'
+    invoke :'bundle:install'
+    invoke :'rails:assets_precompile'
+    invoke :'deploy:cleanup'
+
+    on :launch do
+      invoke :'rbenv:load'
+      invoke :'rails:db_create'
+      invoke :'rails', 'db:migrate'
+      invoke :'rails', 'db:seed'
     end
   end
 end

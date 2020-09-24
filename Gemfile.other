@@ -1,0 +1,31 @@
+gem 'scenic' # ActiveRecord::Migration methods to manage postgresql views, https://github.com/scenic-views/scenic
+gem 'multiverse' # Manage multiple databases, https://github.com/ankane/multiverse
+gem 'columns_on_demand' # https://github.com/willbryant/columns_on_demand
+gem 'fast_jsonapi' # https://github.com/Netflix/fast_jsonapi
+gem 'light_record', git: 'https://github.com/paxa/light_record.git' # load stripped down activerecord objects. Works really well for expensive reports
+gem 'active_record_union' # https://github.com/brianhempel/active_record_union
+gem 'normalizr' # convert blanks to nil, strip text columns, https://github.com/dmeremyanin/normalizr
+gem 'database_validations' # validates_db_uniqueness_of & db_belongs_to, https://github.com/toptal/database_validations
+gem 'enkrip' # automatically encrypt & decrypt Active Record attributes, https://github.com/kuntoaji/enkrip
+gem 'deep_cloneable' # clone AR records and associations, https://github.com/moiristo/deep_cloneable
+gem 'client_side_validations' # https://github.com/DavyJonesLocker/client_side_validations
+gem 'client_side_validations-simple_form' # https://github.com/DavyJonesLocker/client_side_validations-simple_form
+gem 'best_in_place'
+gem 'render_async' # https://github.com/renderedtext/render_async
+gem 'phrasing' # Phrasing is a gem for live editing phrases (copy) on websites, https://github.com/infinum/phrasing
+gem 'ice_nine', require: ['ice_nine', 'ice_nine/core_ext/object'] # provides the .deep_freeze method
+gem 'watir' # web crawling with ability to interact with JS
+gem 'clamby' # ClamAV scanning, https://github.com/kobaltz/clamby
+gem 'chartkick'
+gem 'lazy_highcharts'
+gem 'squid' # Add ability to create charts in Prawn PDFs, https://github.com/fullscreen/squid
+gem 'rails_pdf' # Create PDF documents from HTML, CSS and JS.
+gem 'wicked_pdf' # html to generate pdf, https://github.com/mileszs/wicked_pdf
+gem 'rubyzip' # https://github.com/rubyzip/rubyzip
+gem 'bh' # bootstrap helpers, https://github.com/fullscreen/bh
+gem 'font-awesome-rails', '~>4.0'
+gem "databound" # access Rails model in JS, https://github.com/Nedomas/databound
+gem 'fastentry' # Cache management interface
+gem 'ahoy_matey' ### https://github.com/ankane/ahoy
+gem 'app_perf_rpm' ### https://github.com/randy-girard/app_perf
+gem 'slowpoke' # Rack::Timeout enhancements for Rails, https://github.com/ankane/slowpoke

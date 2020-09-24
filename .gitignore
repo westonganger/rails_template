@@ -22,7 +22,6 @@
 !/storage/.keep
 
 /public/assets
-.byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
@@ -33,3 +32,17 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+*.swp
+
+/public/uploads/*
+/public/assets/*
+/tags
+
+/config/application.yml
+/config/database.yml
+/config/master.key
+*~
+.env
+.byebug_history
+.DS_Store

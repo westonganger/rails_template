@@ -1,0 +1,28 @@
+- case name
+- when 'font-awesome-5', 'fa5'
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
+
+- when 'font-awesome-4', 'fa4'
+  <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+- when 'font-awesome-3', 'fa3'
+  <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" />
+
+- when 'simple-line-icons', 'simple-line-icons-2'
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
+
+- when 'feather', 'feather-4'
+  <script src="//cdnjs.cloudflare.com/ajax/libs/feather-icons/4.21.0/feather.min.js"></script>
+  <script type="text/javascript">feather.replace();</script>
+
+- when 'ionicons-v3'
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/ionicons/3.0.0/css/ionicons.min.css" />
+
+- when 'ionicons-v2'
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
+
+- when 'themify'
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+
+- else
+  - raise "Invalid Icon Framework specified: #{name}"

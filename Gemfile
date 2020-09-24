@@ -1,28 +1,24 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.7.1'
 
-gem 'rails', '~> 6.0.0'
+gem 'rails', '~> 6.0.3'
 
 ### Databases
-#gem 'mysql2'
 gem 'pg'
-gem 'marginalia' # Adds logging info for application, controller, and action names as a comment at the end of each AR query
-#gem 'fog' # Cloud services library
-#gem 'scenic' # ActiveRecord::Migration methods to manage postgresql views, https://github.com/scenic-views/scenic
-#gem 'multiverse' # Manage multiple databases, https://github.com/ankane/multiverse
+
+### Services
+gem 'sidekiq'
 
 ### Webservers
-#gem 'puma'
-#gem 'puma_worker_killer' # https://github.com/schneems/puma_worker_killer
+gem 'puma'
 
 ### Performance Enhancements
 gem 'bootsnap', '>= 1.4.1', require: false
 gem 'fast_blank'
 gem 'fast_underscore'
-#gem 'columns_on_demand' # https://github.com/willbryant/columns_on_demand
-#gem 'oj'
+gem 'oj'
 #gem 'fast_jsonapi' # https://github.com/Netflix/fast_jsonapi
 #gem 'parallel'
 #gem 'light_record', git: 'https://github.com/paxa/light_record.git' # load stripped down activerecord objects. Works really well for expensive reports
@@ -32,104 +28,69 @@ gem 'responders'
 gem 'kaminari' # pagination
 
 ### Users
-#gem 'devise'
-#gem 'devise_invitable' # user invitations
-gem 'devise_'
+gem 'devise'
+gem 'devise_invitable' # user invitations
+#gem 'devise_token_auth'
 gem 'rolify' # user roles, https://github.com/RolifyCommunity/rolify
 gem 'cancancan' # authorization, preferred
-#gem 'pretender' # add ability to switch user, https://github.com/ankane/pretender
+gem 'pretender' # add ability to switch user, https://github.com/ankane/pretender
 
 ### Models / Data
-#gem 'active_record_union' # https://github.com/brianhempel/active_record_union
-gem 'normalizr' # convert blanks to nil, strip text columns, https://github.com/dmeremyanin/normalizr
 gem 'search_cop'
-#gem 'friendly_id'
-#gem 'paper_trail' # model versioning
-#gem 'paper_trail-association_tracking'
-#gem 'activerecord-import' ### if Rails 6 insert_all isnt enough
-#gem 'database_validations' # validates_db_uniqueness_of & db_belongs_to, https://github.com/toptal/database_validations
-#gem 'enkrip' # automatically encrypt & decrypt Active Record attributes, https://github.com/kuntoaji/enkrip
-#gem 'deep_cloneable' # clone AR records and associations, https://github.com/moiristo/deep_cloneable
+gem 'paper_trail' # model versioning
+gem 'activerecord-import' ### if Rails 6 insert_all isnt enough
  
 ### Views / HTML Builders
 gem 'slim'
 gem 'slim-rails'
-gem 'simple_form'
-gem 'client_side_validations' # https://github.com/DavyJonesLocker/client_side_validations
-gem 'client_side_validations-simple_form' # https://github.com/DavyJonesLocker/client_side_validations-simple_form
-#gem 'sexy_form', github: 'westonganger/sexy_form.rb'
+#gem 'simple_form'
+gem 'sexy_form'
 gem 'cocoon'
-#gem 'best_in_place'
-#gem 'render_async' # https://github.com/renderedtext/render_async
-#gem 'phrasing' # Phrasing is a gem for live editing phrases (copy) on websites, https://github.com/infinum/phrasing
-
-### Emails
-#gem 'premailer-rails' # styled emails
-#gem 'mjml-rails' # emails template language, https://github.com/sighmon/mjml-rails
+gem 'render_async' # https://github.com/renderedtext/render_async
 
 ### Utility
-#gem 'ice_nine', require: ['ice_nine', 'ice_nine/core_ext/object'] # provides the .deep_freeze method
-#gem 'nokogiri' # basic web crawling/scraping
-#gem 'watir' # web crawling with ability to interact with JS
-
-### Payments / Store
-gem 'active_merchant'
+gem 'nokogiri' # basic web crawling/scraping
 
 ### File Uploads
 gem 'image_processing'#, '~> 1.2'
 gem 'remotipart'
-#gem 'clamby' # ClamAV scanning, https://github.com/kobaltz/clamby
-
-### Charts
-#gem 'chartkick'
-#gem 'lazy_highcharts'
 
 ### Assets Helpers
 gem 'sassc-rails'
 gem 'webpacker'
 gem 'autoprefixer-rails'
+gem 'premailer-rails' # styled emails
 gem 'image_optim_rails' # https://github.com/toy/image_optim_rails
 gem 'image_optim_pack'
 
 ### Export
 gem 'spreadsheet_architect'
-#gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844' ### to get rid of Ruby 2.4+ deprecation errors
 gem 'prawn-rails' # native PDF generation
-#gem 'squid' # Add ability to create charts in Prawn PDFs, https://github.com/fullscreen/squid
-#gem 'rails_pdf' # Create PDF documents from HTML, CSS and JS.
-#gem 'wicked_pdf' # html to generate pdf, https://github.com/mileszs/wicked_pdf
-#gem 'rubyzip' # https://github.com/rubyzip/rubyzip
 
 ### CSS Libraries
-#gem 'bootstrap-sass'
-#gem 'bh' # bootstrap helpers, https://github.com/fullscreen/bh
-#gem 'font-awesome-rails', '~>4.0'
+gem 'bootstrap-sass'
 
 ### Javascript Libraries
 gem 'turbolinks', '~> 5.0'
-#gem "databound" # access Rails model in JS, https://github.com/Nedomas/databound
 
 ### SEO / Analytics / The Little Things
 gem 'metamagic'
 gem 'sitemap_generator'
 gem 'gaffe' ### think about your error pages
-gem 'notable' # https://github.com/ankane/notable
 
 ### Engines
-#gem 'fastentry' # Cache management interface
-
-#gem 'ahoy_matey' ### https://github.com/ankane/ahoy
-#gem 'app_perf_rpm' ### https://github.com/randy-girard/app_perf
-#gem 'slowpoke' # Rack::Timeout enhancements for Rails, https://github.com/ankane/slowpoke
+gem 'blazer'
+gem 'fastentry' # Cache management interface
+gem 'maily' # Preview email templates, https://github.com/markets/maily
 
 ### Security
 gem 'invisible_captcha'
 gem 'rack-attack'
 
 gem 'exception_notification'
+gem 'whenever', require: false # cron job integration, `whenever --update-crontab`, https://github.com/javan/whenever
 
 group :production do
-  #gem 'whenever', require: false # cron job integration, `whenever --update-crontab`, https://github.com/javan/whenever
 end
 
 group :development, :test do
@@ -137,8 +98,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'thin' # less errors than puma in development
-
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -154,21 +113,15 @@ group :development do
   gem 'rack-mini-profiler'
   gem 'bullet'
 
-  ### Engines
-  gem 'maily' # Preview email templates, https://github.com/markets/maily
-
-  ### Tools / Scripts
+  ### Tools
   gem 'bundler-audit'# bundle audit check --update
   gem 'lol_dba' # bundle exec rake db:find_indexes
   gem 'derailed_benchmarks' # bundle exec derailed bundle:mem
   gem 'database_consistency' # bundle exec database_consistency
   gem 'brakeman' # bundle exec brakeman 
-  gem 'active_record-annotate' # bundle exec rake db:annotate
-  gem 'annotate_gemfile' # bundle exec annotate_gemfile
-  gem 'rename' # rails g rename:into New-Name
   gem 'rails-erd' # generate ERD diagrams
-  gem 'fix-db-schema-conflicts'
 
+  ### Deployment
   gem 'capistrano'
   gem 'airbrussh'
   gem 'capistrano-rails'
@@ -178,6 +131,7 @@ group :development do
   gem 'capistrano-postgresql'
   #gem 'capistrano-rbenv-install'
   gem 'capistrano-safe-deploy-to'
+  gem 'capistrano-precompile-chooser'
   gem 'dump' # Rails app rake and capistrano tasks to create and restore dumps of database and assets, https://github.com/toy/dump
 end
 

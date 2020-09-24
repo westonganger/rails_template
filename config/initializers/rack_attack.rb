@@ -59,7 +59,7 @@ class Rack::Attack
   throttle("logins/email", limit: 5, period: 20.seconds) do |req|
     if !req.get? && req.env['rack.session']["warden.user.user.key"].blank?
       # return the email if present, nil otherwise
-      req.params.dig('user', 'email').presence
+      req.params.dig('user', 'email').presence rescue req.ip
     end
   end
 

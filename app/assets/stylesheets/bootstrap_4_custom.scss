@@ -6,16 +6,8 @@ $enable-responsive-font-sizes: true; //default is false
 //$enable-rounded: true; // default is true
 //$enable-transitions: true; // default is true
 
-//@import "~bootswatch/dist/[theme]/variables";
-@import "~bootstrap/scss/bootstrap";
-//@import "~bootswatch/dist/[theme]bootswatch";
+//@import "bootswatch/dist/[theme]/variables";
+//@import "bootstrap/scss/bootstrap";
+//@import "bootswatch/dist/[theme]bootswatch";
 
 /* Bootstrap 4 Fixes */
-
-/* Allow vertical scrolling on toggle nav */
-/* https://stackoverflow.com/questions/48833789/scrolling-in-sticky-top-navbar-bootstrap-4 */
-.navbar.fixed-top{
-  overflow-y: scroll;
-  -webkit-overflow-scrolling:touch; // mobile safari
-  max-height: 90vh;
-}
