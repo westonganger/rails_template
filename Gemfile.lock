@@ -45,8 +45,6 @@ GEM
     activerecord (6.0.3.3)
       activemodel (= 6.0.3.3)
       activesupport (= 6.0.3.3)
-    activerecord-import (1.0.6)
-      activerecord (>= 3.2)
     activestorage (6.0.3.3)
       actionpack (= 6.0.3.3)
       activejob (= 6.0.3.3)
@@ -196,6 +194,10 @@ GEM
     devise_invitable (2.0.2)
       actionmailer (>= 5.0)
       devise (>= 4.6)
+    devise_token_auth (1.1.3)
+      bcrypt (~> 3.0)
+      devise (> 3.5.2, < 5)
+      rails (>= 4.2.0, < 6.1)
     dry-inflector (0.2.0)
     dump (1.2.2)
       minitar (~> 0.6)
@@ -279,6 +281,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
+    libv8 (8.4.255.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -307,6 +310,8 @@ GEM
     mini_magick (4.10.1)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
+    mini_racer (0.3.1)
+      libv8 (~> 8.4.255)
     minitar (0.9)
     minitest (5.14.2)
     minitest-reporters (1.4.2)
@@ -527,13 +532,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-import
   airbrussh
   autoprefixer-rails
   better_errors
   binding_of_caller
   blazer
-  bootsnap (>= 1.4.1)
+  bootsnap
   bootstrap-sass
   brakeman
   bullet
@@ -557,6 +561,7 @@ DEPENDENCIES
   derailed_benchmarks
   devise
   devise_invitable
+  devise_token_auth
   dump
   exception_notification
   fast_blank
@@ -575,6 +580,7 @@ DEPENDENCIES
   lol_dba
   maily
   metamagic
+  mini_racer
   minitest-reporters
   nokogiri
   oj

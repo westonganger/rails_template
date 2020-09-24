@@ -12,7 +12,6 @@
     "jquery": "*"
   },
   "unusedDependencies": {
-    "zepto": "*",
     "x-data-spreadsheet": "git+https://github.com/myliang/x-spreadsheet.git",
     "chosen": "*",
     "chosen-bootstrap-theme": "*",

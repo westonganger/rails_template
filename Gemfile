@@ -15,7 +15,7 @@ gem 'sidekiq'
 gem 'puma'
 
 ### Performance Enhancements
-gem 'bootsnap', '>= 1.4.1', require: false
+gem 'bootsnap', require: false
 gem 'fast_blank'
 gem 'fast_underscore'
 gem 'oj'
@@ -30,7 +30,7 @@ gem 'kaminari' # pagination
 ### Users
 gem 'devise'
 gem 'devise_invitable' # user invitations
-#gem 'devise_token_auth'
+gem 'devise_token_auth'
 gem 'rolify' # user roles, https://github.com/RolifyCommunity/rolify
 gem 'cancancan' # authorization, preferred
 gem 'pretender' # add ability to switch user, https://github.com/ankane/pretender
@@ -38,7 +38,6 @@ gem 'pretender' # add ability to switch user, https://github.com/ankane/pretende
 ### Models / Data
 gem 'search_cop'
 gem 'paper_trail' # model versioning
-gem 'activerecord-import' ### if Rails 6 insert_all isnt enough
  
 ### Views / HTML Builders
 gem 'slim'
@@ -52,11 +51,12 @@ gem 'render_async' # https://github.com/renderedtext/render_async
 gem 'nokogiri' # basic web crawling/scraping
 
 ### File Uploads
-gem 'image_processing'#, '~> 1.2'
+gem 'image_processing'
 gem 'remotipart'
 
 ### Assets Helpers
 gem 'sassc-rails'
+gem 'mini_racer'
 gem 'webpacker'
 gem 'autoprefixer-rails'
 gem 'premailer-rails' # styled emails

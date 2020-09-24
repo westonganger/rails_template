@@ -4,3 +4,9 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+ENV['COVERAGE'] = 'PartialSummary'
+#ENV['COVERAGE'] = 'BriefSummary'
+#ENV['COVERAGE'] = 'Summary'
+
+task default: :test
