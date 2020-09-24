@@ -2,14 +2,14 @@
 ## backup gem example
 ## Howto:
 ## $ gem install backup
-## $ backup generate:model --trigger my_app_name --archives --storages='local' --compressor='gzip'
-## $ cp config/backup.rb.example ~/Backup/models/my_app_name.rb
-## $ backup perform --trigger my_app_name
+## $ backup generate:model --trigger rails_starter_app --archives --storages='local' --compressor='gzip'
+## $ cp config/backup.rb.example ~/Backup/models/rails_starter_app.rb
+## $ backup perform --trigger rails_starter_app
 
-Model.new(:my_app_name, 'Description for my_app_name') do
+Model.new(:rails_starter_app, 'Description for rails_starter_app') do
 
   database PostgreSQL do |db|
-    db.name               = "my_app_name_production"
+    db.name               = "rails_starter_app_production"
     db.username           = "postgres"
     db.password           = "postgres"
     db.host               = "localhost"
@@ -17,7 +17,7 @@ Model.new(:my_app_name, 'Description for my_app_name') do
   end
 
   archive :rails_config do |archive|
-    archive.add "/data/www/my_app_name/shared/config/"
+    archive.add "/data/www/rails_starter_app/shared/config/"
     archive.add "/etc/nginx/conf.d/"
   end
 

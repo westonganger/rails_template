@@ -1,5 +1,5 @@
 set :domain, 'example.com'
-set :deploy_to, '/data/www/my_app_name'
+set :deploy_to, '/data/www/rails_starter_app'
 set :repository,  'git@github.com:xx/xxx.git'
 set :branch, 'master'
 set :user, 'ruby'

@@ -12,7 +12,7 @@ html
     - if content_for?(:title)
       title = format("%s - Dashboard", yield(:title))
     - else
-      title my_app_name Dashboard
+      title rails_starter_app Dashboard
     = csrf_meta_tags
     = action_cable_meta_tag
     = content_for?(:head) ? yield(:head) : ''

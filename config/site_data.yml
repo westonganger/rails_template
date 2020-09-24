@@ -1,0 +1,12 @@
+default: &default
+  app_name: Rails Starter App
+  domain: example.com
+
+development:
+  <<: &default
+
+test:
+  <<: &default
+
+production:
+  <<: &default

@@ -1,0 +1,22 @@
+doctype html
+html.h-100 lang="en" 
+  head
+    = render 'shared/meta_tags'
+
+    title = SITE_DATA[:app_name]
+    meta content="#{SITE_DATA[:app_description]}" name="description"
+    meta content=("Weston Ganger") name="author"
+
+    = favicon_link_tag "favicon.ico"
+
+    = stylesheet_link_tag 'front_end', media: 'all', 'data-turbolinks-track': 'reload'
+
+    = javascript_pack_tag 'front_end', 'data-turbolinks-track': 'reload'
+
+  body.d-flex.flex-column.h-100.has-sticky-footer#page-top
+    = render 'shared/loader'
+
+    #page-content
+      = render 'shared/flash'
+
+      = yield

@@ -1,7 +1,7 @@
 # truncate your rails log every day
 # Usage:
-# `cp logrotate.conf.example /etc/logrotate.d/my_app_name`
-/data/www/my_app_name/current/log/*.log {
+# `cp logrotate.conf.example /etc/logrotate.d/rails_starter_app`
+/data/www/rails_starter_app/current/log/*.log {
   daily
   missingok
   rotate 7

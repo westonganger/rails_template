@@ -1,13 +1,11 @@
-$enable-shadows: true; // default is false
+//$enable-shadows: true; // default is false
 $enable-gradients: true; // default is false
-$enable-responsive-font-sizes: true; //default is false
+//$enable-responsive-font-sizes: true; //default is false
 
 //$spacer: 1rem; // default is 1rem
 //$enable-rounded: true; // default is true
 //$enable-transitions: true; // default is true
 
 //@import "bootswatch/dist/[theme]/variables";
-//@import "bootstrap/scss/bootstrap";
+@import "bootstrap/scss/bootstrap";
 //@import "bootswatch/dist/[theme]bootswatch";
-
-/* Bootstrap 4 Fixes */

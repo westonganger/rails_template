@@ -1,7 +1,7 @@
 {
-  "name": "my_app_name",
+  "name": "rails_starter_app",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",

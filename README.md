@@ -22,21 +22,21 @@ Our template sets up a tons of essential app components for you to make your dev
 
 ## Usage
 
-The following command creates a new app caled `my_app_name`
+The following command creates a new app caled `rails_starter_app`
 
 ```
 find_replace(){
   grep -rl --exclude-dir="\.git" --exclude"README.md" "$1" $3 | xargs sed -i "s/$1/$2/g"
 }
 
-find_replace MyAppName YourAppName
-find_replace my_app_name your_app_name
+find_replace RailsStarterApp YourAppName
+find_replace rails_starter_app your_app_name
 ```
 
 ## Guides
 
-* [Server Setup]()https://github.com/westonganger/my_app_name/blob/master/docs/server_setup.md
-* [Deployment](https://github.com/westonganger/my_app_name/blob/master/docs/deploy.md)
+* [Server Setup]()https://github.com/westonganger/rails_starter_app/blob/master/docs/server_setup.md
+* [Deployment](https://github.com/westonganger/rails_starter_app/blob/master/docs/deploy.md)
 
 ## Credits
 

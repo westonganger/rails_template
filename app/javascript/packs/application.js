@@ -1,9 +1,8 @@
-import 'styles/application'
-import '../js/base'
-
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
+//require("@rails/actioncable").start()
+//require("@rails/actiontext").start()
 
 global.$ = global.jQuery = require('jquery');
 

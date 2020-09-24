@@ -194,10 +194,10 @@ GEM
     devise_invitable (2.0.2)
       actionmailer (>= 5.0)
       devise (>= 4.6)
-    devise_token_auth (1.1.3)
-      bcrypt (~> 3.0)
-      devise (> 3.5.2, < 5)
-      rails (>= 4.2.0, < 6.1)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     dry-inflector (0.2.0)
     dump (1.2.2)
       minitar (~> 0.6)
@@ -218,8 +218,6 @@ GEM
     ffi (1.13.1)
     formatador (0.2.5)
     fspath (3.1.2)
-    gaffe (1.2.0)
-      rails (>= 4.0.0)
     geckodriver-helper (0.24.0)
       archive-zip (~> 0.7)
     get_process_mem (0.2.7)
@@ -561,13 +559,12 @@ DEPENDENCIES
   derailed_benchmarks
   devise
   devise_invitable
-  devise_token_auth
+  dotenv-rails
   dump
   exception_notification
   fast_blank
   fast_underscore
   fastentry
-  gaffe
   geckodriver-helper
   guard-consistency_fail
   guard-rails

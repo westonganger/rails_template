@@ -23,6 +23,9 @@ gem 'oj'
 #gem 'parallel'
 #gem 'light_record', git: 'https://github.com/paxa/light_record.git' # load stripped down activerecord objects. Works really well for expensive reports
 
+### Configuration
+gem 'dotenv-rails'
+
 ### Controllers
 gem 'responders'
 gem 'kaminari' # pagination
@@ -30,7 +33,6 @@ gem 'kaminari' # pagination
 ### Users
 gem 'devise'
 gem 'devise_invitable' # user invitations
-gem 'devise_token_auth'
 gem 'rolify' # user roles, https://github.com/RolifyCommunity/rolify
 gem 'cancancan' # authorization, preferred
 gem 'pretender' # add ability to switch user, https://github.com/ankane/pretender
@@ -76,17 +78,17 @@ gem 'turbolinks', '~> 5.0'
 ### SEO / Analytics / The Little Things
 gem 'metamagic'
 gem 'sitemap_generator'
-gem 'gaffe' ### think about your error pages
 
 ### Engines
 gem 'blazer'
-gem 'fastentry' # Cache management interface
+gem 'fastentry', require: ['fastentry','fastentry/engine'] # Cache management interface
 gem 'maily' # Preview email templates, https://github.com/markets/maily
 
 ### Security
 gem 'invisible_captcha'
 gem 'rack-attack'
 
+### Server
 gem 'exception_notification'
 gem 'whenever', require: false # cron job integration, `whenever --update-crontab`, https://github.com/javan/whenever
 

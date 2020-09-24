@@ -1,4 +1,6 @@
-class FrontEndController < ApplicationController
+class FrontEndController < BaseController
+
+  layout "front_end"
 
   def index
   end

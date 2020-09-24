@@ -5,7 +5,7 @@ html.h-100 lang="en"
     meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
 
-    title = Settings[:app_name]
+    title = SITE_DATA[:app_name]
 
     = favicon_link_tag "favicon.ico"
 
@@ -20,7 +20,6 @@ html.h-100 lang="en"
     = stylesheet_link_tag 'application', media: 'all'
     /= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = render 'shared/asset', name: 'bootstrap', version: '4.4.1', only_css: true
-    = render 'shared/asset', name: 'froala_design_blocks'
 
     = render 'shared/asset', name: 'jquery', version: '3.5.1'
     = render 'shared/asset', name: 'bootstrap', version: '4.4.1', only_js: true
