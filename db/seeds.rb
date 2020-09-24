@@ -1,3 +1,8 @@
-if User.exists?
-  User.find_or_create_by!(email: 'admin@example.com', password: 'admin123', password_confirmation: 'admin123')
+if User.all.empty?
+  User.create!(
+    email: SITE_DATA[:admin_user][:email], 
+    password: SITE_DATA[:admin_user][:password], 
+    password_confirmation: SITE_DATA[:admin_user][:password],
+    invitation_accepted_at: Time.now,
+  )
 end

@@ -1,7 +1,9 @@
-$(document).on('turbolinks:load',  function(){
-  //$('[data-toggle="popover"]').popover();
+import 'bootstrap';
 
-  //$('[data-toggle="tooltip"]').tooltip();
+$(document).on('turbolinks:load',  function(){
+  $('[data-toggle="popover"]').popover();
+
+  $('[data-toggle="tooltip"]').tooltip();
 });
 
 /* Bootstrap AJAX Modals */

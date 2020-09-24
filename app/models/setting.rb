@@ -1,4 +1,4 @@
-class TwoBecomingOne::Setting < TwoBecomingOne::Base
+class Setting < ActiveRecord::Base
   validates :var, presence: true, uniqueness: {case_sensitive: false}
   validates :type, presence: true
   validates :category, presence: true

@@ -112,7 +112,8 @@ group :development do
   gem 'better_errors'
   gem 'web-console', '>= 3.3.0'
 
-  gem 'rack-mini-profiler'
+  #gem 'rack-mini-profiler'
+  gem 'rack-mini-profiler', git: "https://github.com/westonganger/rack-mini-profiler.git", branch: "patch-1"
   gem 'bullet'
 
   ### Tools

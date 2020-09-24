@@ -4,7 +4,37 @@
 /* Allow vertical scrolling on toggle nav */
 /* https://stackoverflow.com/questions/48833789/scrolling-in-sticky-top-navbar-bootstrap-4 */
 .navbar.fixed-top{
-  overflow-y: scroll;
-  -webkit-overflow-scrolling:touch; // mobile safari
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; // mobile safari
   max-height: 90vh;
+}
+
+$navbar-height: 70px;
+$footer-height: 40px;
+
+html, body{
+  height: 100%; // required for sticky footer
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+
+  #push{
+    margin-top: $navbar-height;
+  }
+
+  #page-content{
+    height: 100%;
+
+    &> .container,
+    &> .container-fluid{
+      height: 100%;
+    }
+  }
+  
+  footer{
+    margin-top: auto; // required for sticky footer, https://getbootstrap.com/docs/4.3/examples/sticky-footer-navbar/
+    height: $footer-height;
+  }
 }

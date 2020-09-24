@@ -1,0 +1,16 @@
+default: &default
+  app_name: Rails Starter App
+  app_description: 
+  domain: example.com
+
+development:
+  <<: *default
+  admin_user:
+    email: 'admin@example.com'
+    password: 'admin123'
+
+test:
+  <<: *default
+
+production:
+  <<: *default

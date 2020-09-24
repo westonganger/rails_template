@@ -5,7 +5,9 @@ class ApplicationController < BaseController
   helper_method :stored_location_for
 
   before_action :ensure_request_format
-  #before_action :authenticate_user!
+
+  before_action :dont_allow_user_self_registration
+  before_action :authenticate_user!
   before_action :check_session_validity
   #before_action :check_session_time
   before_action :set_paper_trail_whodunnit
@@ -30,7 +32,9 @@ class ApplicationController < BaseController
   end
 
   def determine_layout
-    if request.xhr?
+    if devise_controller?
+      'front_end'
+    elsif request.xhr?
       'modal'
     else
       'application'
@@ -41,7 +45,7 @@ class ApplicationController < BaseController
   def after_sign_in_path_for(resource_or_scope)
     is_signing_in = devise_controller? && params[:controller] == 'devise/users/sessions' && ['new','create'].include?(params[:action])
 
-    path = root_path
+    path = dashboard_path
 
     if is_signing_in
       ### If the user is signing in then return to the stored location or default defined path
@@ -71,9 +75,9 @@ class ApplicationController < BaseController
   
   ### If admin disables a user while they are logged in, log them out upon the next request
   def check_session_validity
-    if @current_user && @current_user.deleted_at
+    if @current_user && @current_user.disabled_at
       sign_out @current_user
-      redirect_to root_path, alert: 'Your account has been disabled by an administrator. You have been signed out.'
+      redirect_to root_path, alert: 'Your account has been disabled by an administrator. Please contact us if you think this is incorrect.'
     end
   end
 

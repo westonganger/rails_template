@@ -1,28 +1,2 @@
 @import "./shared";
 @import "./bootstrap_4_custom";
-
-$navbar-height: 70px;
-$footer-height: 40px;
-
-html, body{
-  height: 100%; // required for sticky footer
-}
-
-body{
-  display: flex;
-  flex-direction: column;
-
-  #page-content{
-    flex-shrink: 0;
-    margin-top: $navbar-height;
-  }
-  
-  footer{
-    margin-top: auto; // required for sticky footer, https://getbootstrap.com/docs/4.3/examples/sticky-footer-navbar/
-    height: $footer-height;
-  }
-}
-
-.full-height{
-  height: calc(100vh - #{$navbar-height});
-}

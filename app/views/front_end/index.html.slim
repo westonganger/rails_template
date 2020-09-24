@@ -1,11 +1,11 @@
 .container
-  .row style="height: calc(100vh - 240px);"
-    .my-auto.center-block.text-center
+  .row.h-100
+    .mx-auto.my-auto.text-center
       a[href="https://solidfoundationwebdev.com" target="_blank"]
         = image_tag "sfwd_logo.png", class: 'center-block', style: "max-height: 150px", alt: "Logo" 
 
       h1 Rails Starter App
 
       .center-block style="width: 250px;"
-        a.btn.btn-primary.btn-block.mt-5 href=new_user_session_path Client Area
+        a.btn.btn-primary.btn-block.mt-5 href=dashboard_path Client Area
         a.btn.btn-success.btn-block.mt-4 href="https://solidfoundationwebdev.com/#contact" Contact Us

@@ -1,7 +1,7 @@
 default: &default
   adapter: postgresql
   #host: localhost
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 16 } %>
   encoding: unicode
   username: postgres
   password: postgres
@@ -19,6 +19,5 @@ test:
 production:
   <<: *default
   database: rails_starter_app
-  pool:     16
   username:
   password:

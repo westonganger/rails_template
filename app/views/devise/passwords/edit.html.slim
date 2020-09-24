@@ -1,25 +1,26 @@
-.row
-  .col-lg-4.col-md-6.ml-auto.mr-auto
-    h2.text-center Change your password
+.container
+  .row.h-100
+    .col-lg-4.col-md-6.mx-auto.my-auto
+      h2.text-center Change your password
 
-    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-      = render 'devise/shared/error_messages', resource: resource
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+        = render 'devise/shared/error_messages', resource: resource
 
-      = f.hidden_field :reset_password_token
+        = f.hidden_field :reset_password_token
 
-      .form-group
-        = f.password_field :password, autofocus: true, autocomplete: "off", class: 'form-control', placeholder: "Password"
-        - if @minimum_password_length
-          p.text-muted
-            small
-              = @minimum_password_length
-              |  characters minimum
+        .form-group
+          = f.password_field :password, autofocus: true, autocomplete: "off", class: 'form-control', placeholder: "Password"
+          - if @minimum_password_length
+            p.text-muted
+              small
+                = @minimum_password_length
+                |  characters minimum
 
-      .form-group
-        = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: "Confirm Password"
+        .form-group
+          = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: "Confirm Password"
 
-      .form-group
-        = f.submit "Change my password", class: 'btn btn-primary btn-block btn-lg'
+        .form-group
+          = f.submit "Change my password", class: 'btn btn-primary btn-block btn-lg'
 
-    .text-center
-      = render "devise/shared/links"
+      .text-center
+        = render "devise/shared/links"

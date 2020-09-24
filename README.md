@@ -1,26 +1,9 @@
 # Rails Starter App
 
-Are you sick of jumping through all the hoops of setting up a big Rails app only to throw the idea down the drain cause you got sick of it? 
+An easy to use Rails template that kicks ass for you and lets you focus on the Product idea.
+Our template sets up a tons of essential components for you to make your development pretty damn fast.
 
-Well now you dont have to because I have an easy to use Rails template that kicks ass for you and lets you focus only on the Product idea.
-
-Our template sets up a tons of essential app components for you to make your development pretty damn fast.
-
-## Features
-
-- A default set of Models, Controllers, and Views
-- Integrated front-end libraries such as jQuery, Bootstrap 4, Font-awesome 4, Turbolinks, AdminLTE v3 to get started fast
-- `slim` HTML templating for ease of development
-- Plain `sprockets` handled Javascript (strongly recommended) and `webpacker` are both integrated
-- Simple front-end dependency management using a view partial that outputs <script> tags
-- File uploads are handled by `active_storage` with both remote and local options configured
-- Testing is setup with `minitest` and `capybara`
-- Deployment is handled with `mina`. Capistrano was not chosen because it has an rough outdated eco-system.
-- Zero-downtime restarts with `mina-ng-puma`
-- Server Configuration Helpers for `monit`, `nginx example`, `https ssl example`, `logrotate`, `backup example` is ready for you
-- ActionCable is disabled, you can enable it once you "actually" need it
-
-## Usage
+## Setting Up New App 
 
 The following command creates a new app caled `rails_starter_app`
 
@@ -31,12 +14,25 @@ find_replace(){
 
 find_replace RailsStarterApp YourAppName
 find_replace rails_starter_app your_app_name
+
+git remote remove origin
+git remote add origin <your-git-url-here>
+
+git add -A
+git commit -m 'git-er-done'
+git push origin master
 ```
 
-## Guides
+## Development Setup
 
-* [Server Setup]()https://github.com/westonganger/rails_starter_app/blob/master/docs/server_setup.md
-* [Deployment](https://github.com/westonganger/rails_starter_app/blob/master/docs/deploy.md)
+bundle install
+rake db:setup
+rake db:migrate
+rails s
+
+## Guides / Documentation
+
+* https://github.com/westonganger/rails_starter_app/blob/master/docs/table_of_contents.md
 
 ## Credits
 

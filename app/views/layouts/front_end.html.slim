@@ -13,7 +13,7 @@ html.h-100 lang="en"
 
     = javascript_pack_tag 'front_end', 'data-turbolinks-track': 'reload'
 
-  body.d-flex.flex-column.h-100.has-sticky-footer#page-top
+  body.has-sticky-footer#page-top
     = render "shared/loader"
 
     nav.navbar.bg-dark.bg-light.fixed-top
@@ -22,10 +22,13 @@ html.h-100 lang="en"
 
       ul.navbar-nav
         li.nav-link
-          a.btn.btn-primary href=new_user_session_path Client Area
+          a.btn.btn-primary href=dashboard_path Client Area
+
+    #push
+    = render "shared/flash"
 
     #page-content
-      = render "shared/flash"
       = yield
+      = render "shared/admin_buttons"
 
     = render "shared/footer"

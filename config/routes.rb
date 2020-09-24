@@ -10,14 +10,11 @@ Rails.application.routes.draw do
     devise_for :users
 
     namespace :admin do
-      get 'login', to: 'sessions#new', as: :login
-      post 'login', to: 'sessions#create'
-      get 'logout', to: 'sessions#destroy', as: :logout
-      delete 'logout', to: 'sessions#destroy'
-      resource :account, only: [:edit, :update]
-
+      resource :users, only: [:edit, :update]
       root to: 'dashboard#index'
     end
+
+    get "/dashboard", to: "dashboard#index"
 
     mount Blazer::Engine, at: "/admin/data_reporting"
     mount Fastentry::Engine, at: "/admin/cache_manager"

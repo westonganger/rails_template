@@ -22,13 +22,23 @@ html.h-100 lang="en"
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'google_analytics', 'data-turbolinks-track': 'reload'
 
-  body.d-flex.flex-column.h-100.has-sticky-footer#page-top
+  body.has-sticky-footer#page-top
     = render "shared/loader"
+
+    nav.navbar.bg-dark.bg-light.fixed-top
+      a.navbar-brand[href="/"]
+        = image_tag "sfwd_logo_alt.png", class: 'd-inline-block align-top', alt: "Logo", style: "max-height:45px;"
+
+      ul.navbar-nav
+        li.nav-link
+          a.btn.btn-danger href=destroy_user_session_path data-method="delete" Sign Out
+    
+    #push
+    = render "shared/flash"
 
     // TODO: Sidebar
 
     #page-content
-      = render "shared/flash"
       = yield
 
     = render "shared/footer"

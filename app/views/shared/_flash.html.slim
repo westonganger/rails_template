@@ -1,5 +1,7 @@
-- flash.each do |name, msg|
-  - if msg.is_a?(String)
-    .alert.alert-dismissible class="alert-#{name.to_s == 'notice' ? 'success' : 'danger'}"
-      button.close type="button" data-dismiss="alert" aria-hidden="true" ×
-      span id="flash_#{name}" = msg
+- unless flash.empty?
+  .flash-container
+    - flash.each do |name, msg|
+      - if msg.is_a?(String)
+        .alert.alert-dismissible class="alert-#{name.to_s == 'notice' ? 'success' : 'danger'}"
+          button.close type="button" data-dismiss="alert" aria-hidden="true" ×
+          span id="flash_#{name}" = msg

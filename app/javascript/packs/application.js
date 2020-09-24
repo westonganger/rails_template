@@ -1,31 +1,19 @@
-require("@rails/ujs").start()
-require("turbolinks").start()
+import "./shared";
+import "./bootstrap_4_custom";
+
 require("@rails/activestorage").start()
 //require("@rails/actioncable").start()
 //require("@rails/actiontext").start()
 
-global.$ = global.jQuery = require('jquery');
-
-// https://github.com/VodkaBears/Vide/issues/183#issuecomment-365603849
-jQuery.fn.load = function(callback) { $(window).on("load", callback) };
-
 var autosize = require('autosize/dist/autosize.js');
 require("./vendor/jquery.tablesorter.js");
 require("jquery-enable-disable/dist/jquery-enable-disable.js");
-
-$(document).ready(function(){
-  $(document).trigger('turbolinks:load');
-});
 
 $(document).on('turbolinks:load',  function(){
   /* Vertical Autosizing textarea tags */
   var textarea = $("textarea:not(.no-autosize)");
   textarea.not('.more-rows').prop('rows','1');
   autosize(textarea);
-
-  $("a[href^='#'], a[href^='/#'], a[href^='tel'], a[href^='mailto']").attr('data-turbolinks','false');
-
-  $('form').prop('autocomplete','off');
 
   $('table.table-sortable').tablesorter();
 });
