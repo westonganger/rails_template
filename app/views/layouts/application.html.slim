@@ -14,30 +14,21 @@ html.h-100 lang="en"
 
     meta charset="utf-8"
     meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"
-    meta content="#{Settings[:app_description]}" name="description"
+    meta content="#{SITE_DATA[:app_description]}" name="description"
     meta content=("Weston Ganger") name="author"
 
-    = stylesheet_link_tag 'application', media: 'all'
-    /= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = render 'shared/asset', name: 'bootstrap', version: '4.4.1', only_css: true
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' 
 
-    = render 'shared/asset', name: 'jquery', version: '3.5.1'
-    = render 'shared/asset', name: 'bootstrap', version: '4.4.1', only_js: true
-
-    link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
-
-    = render 'shared/icons', name: 'font-awesome-4'
-
-    = javascript_include_tag 'application'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'google_analytics', 'data-turbolinks-track': 'reload'
 
-    = render 'shared/asset', name: 'stripe', version: 'v3'
-
   body.d-flex.flex-column.h-100.has-sticky-footer#page-top
-    = render 'shared/loader'
+    = render "shared/loader"
+
+    // TODO: Sidebar
 
     #page-content
-      = render 'shared/flash'
-
+      = render "shared/flash"
       = yield
+
+    = render "shared/footer"

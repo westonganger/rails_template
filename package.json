@@ -7,9 +7,11 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "^4.0.2",
-    "turbolinks": "^5.2.0",
-    "autosize": "*",
-    "jquery": "*"
+    "autosize": "^4.0.2",
+    "bootstrap": "^4.5.2",
+    "jquery": "^3.5.1",
+    "rails-erb-loader": "^5.5.2",
+    "turbolinks": "^5.2.0"
   },
   "unusedDependencies": {
     "x-data-spreadsheet": "git+https://github.com/myliang/x-spreadsheet.git",

@@ -1,4 +1,4 @@
-# No Bulls**t Rails Starter
+# Rails Starter App
 
 Are you sick of jumping through all the hoops of setting up a big Rails app only to throw the idea down the drain cause you got sick of it? 
 
