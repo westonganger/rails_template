@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  mount_devise_token_auth_for 'User', at: 'auth'
+  devise_for :users
+  #mount_devise_token_auth_for 'User', at: 'auth', as: :api_user
 
   namespace :admin do
     get 'login', to: 'sessions#new', as: :login

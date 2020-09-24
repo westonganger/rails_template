@@ -1,10 +1,10 @@
-class Error
+module Error
 
   ### Used as a warning when incorrect data is being generating
   class InvalidBehaviour < StandardError
   end
 
-  class CustomUnauthorized < StandardError
+  class Unauthorized < StandardError
   end
 
 end

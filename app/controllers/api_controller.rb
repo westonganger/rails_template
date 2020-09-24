@@ -1,6 +1,6 @@
 class ApiController < ActionController::API
 
-  #include DeviseTokenAuth::Concerns::SetUserByToken
+  include DeviseTokenAuth::Concerns::SetUserByToken
 
   ### https://blog.rebased.pl/2016/11/07/api-error-handling.html
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response

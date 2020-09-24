@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :stored_location_for
 
   before_action :ensure_request_format
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
   before_action :check_session_validity
   #before_action :check_session_time
   before_action :set_paper_trail_whodunnit
@@ -64,7 +64,7 @@ class ApplicationController < ActionController::Base
     if user_signed_in? || devise_controller?
       super
     else
-      redirect_to devise.new_user_session_path
+      redirect_to new_user_session_path
     end
   end
   ### END Devise Config
@@ -82,7 +82,7 @@ class ApplicationController < ActionController::Base
     if !Rails.env.test? && @current_user && (@current_user.current_sign_in_at + 8.hours) < Time.now
       sign_out @current_user
       unless request[:path] == root_path
-        redirect_to devise_ldap.new_user_session_path
+        redirect_to new_user_session_path
       end
     end
   end
