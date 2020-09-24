@@ -38,7 +38,8 @@ module MyAppName
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :en
     
-    config.logger = ActiveSupport::Logger.new(config.paths['log'].first, 5, 5.megabyte)
+    ### Use this if you are not using logrotate
+    #config.logger = ActiveSupport::Logger.new(config.paths['log'].first, 5, 5.megabyte)
 
     config.generators.test_framework = false
     config.generators.helper = false
