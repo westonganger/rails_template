@@ -33,7 +33,7 @@ data_sources:
       # user_id: "SELECT id, name FROM users WHERE id IN {value}"
 
 # create audits
-audit: true
+# audit: true
 
 # change the time zone
 # time_zone: "Pacific Time (US & Canada)"
@@ -48,7 +48,7 @@ audit: true
 # user_name: name
 
 # custom before_action to use for auth
-before_action_method: "authenticate_user!"
+before_action_method: ""
 
 # email to send checks from
 from_email: <%= ENV["EMAIL_FROM"] %>

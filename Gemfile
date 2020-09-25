@@ -53,6 +53,7 @@ gem 'render_async' # https://github.com/renderedtext/render_async
 gem 'nokogiri' # basic web crawling/scraping
 
 ### File Uploads
+gem 'shrine'
 gem 'image_processing'
 gem 'remotipart'
 
