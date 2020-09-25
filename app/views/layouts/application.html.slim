@@ -41,6 +41,7 @@ html.h-100 lang="en"
     #page-content.dark-sidebar.toggled
       = render 'shared/side_nav'
       #main
-        = yield
+        #main-content
+          = yield
 
-    = render "shared/footer"
+        = render "shared/footer"

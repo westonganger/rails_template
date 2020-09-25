@@ -7,8 +7,7 @@ require("@rails/activestorage").start()
 //require("@rails/actiontext").start()
 
 var autosize = require('autosize/dist/autosize.js');
-require("./vendor/jquery.tablesorter.js");
-require("jquery-enable-disable/dist/jquery-enable-disable.js");
+require("tablesorter");
 
 $(document).on('turbolinks:load',  function(){
   /* Vertical Autosizing textarea tags */

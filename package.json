@@ -17,6 +17,7 @@
     "rails-erb-loader": "^5.5.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "tablesorter": "^2.31.3",
     "turbolinks": "^5.2.0"
   },
   "unusedDependencies": {

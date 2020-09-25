@@ -90,7 +90,7 @@ body {
 
 @media screen and (min-width: 768px) {
   #page-content.toggled #main {
-    padding-left: 300px;
+    padding-left: $sidebar-width;
   }
 }
 /*----------------show sidebar button----------------*/
@@ -137,9 +137,14 @@ body {
   position: relative;
 }
 
-.sidebar-content.desktop {
-  overflow-y: hidden;
-}
+/* Hide scrollbar */
+.sidebar-content {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  &::-webkit-scrollbar{
+    display: none;
+  }
+} 
 
 /*--------------------sidebar-brand----------------------*/
 
@@ -359,16 +364,7 @@ body {
 #page-content #main {
   display: inline-block;
   width: 100%;
-  padding-left: 0px;
-  padding-top: 20px;
-}
-
-#page-content #main > div {
-  padding: 20px 40px;
-}
-
-#page-content #main {
-  overflow-x: hidden;
+  //overflow-x: hidden;
 }
 
 /*------scroll bar---------------------*/

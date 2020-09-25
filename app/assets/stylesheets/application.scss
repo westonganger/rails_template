@@ -1,3 +1,15 @@
 @import "./shared";
 @import "./bootstrap_4_custom";
 @import "./sidebar";
+
+#main-content{
+  padding: 20px 40px;
+}
+
+#main-content{
+  height: calc(100% - #{$footer-height})
+}
+
+html, body, #page-content, #main{
+  height: 100%;
+}
