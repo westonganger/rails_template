@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     get "/dashboard", to: "dashboard#index"
 
     constraints is_admin do
+    end
+
+    authenticate :user, ->(user){ user.has_role?(:admin) } do
       mount Blazer::Engine, at: "/admin/data_reporting"
       mount Fastentry::Engine, at: "/admin/cache_manager"
     end

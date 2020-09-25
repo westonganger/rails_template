@@ -1,0 +1,8 @@
+= SexyForm.form(theme: :bootstrap_4_vertical, action: "/products", method: :post do |f|
+
+<% attributes.each do |attribute| -%>
+  = f.field name: "<%= singular_table_name %>[<%= attribute.name %>]", label: <% attribute.human_name %>, type: <%= attribute.field_type %>, errors: @<%= singular_table_name %>.errors["<%= attribute.name %>"]
+
+<% end -%>
+  button.btn.btn-primary type="submit" Submit
+  a.btn.btn-danger href=cancel_path Cancel

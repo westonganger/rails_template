@@ -2,6 +2,7 @@ default: &default
   app_name: Rails Starter App
   app_description: 
   domain: example.com
+  email_from: "no-reply@example.com"
 
 development:
   <<: *default

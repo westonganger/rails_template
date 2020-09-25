@@ -48,10 +48,10 @@ audit: true
 # user_name: name
 
 # custom before_action to use for auth
-before_action_method: require_admin
+before_action_method: "authenticate_user!"
 
 # email to send checks from
-from_email: <%= ApplicationMailer.default[:from] %>
+from_email: <%= ENV["EMAIL_FROM"] %>
 
 # webhook for Slack
 # slack_webhook_url: <%= ENV["BLAZER_SLACK_WEBHOOK_URL"] %>

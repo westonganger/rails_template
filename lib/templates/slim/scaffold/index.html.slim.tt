@@ -1,0 +1,29 @@
+h1 <%= plural_table_name.titleize %>
+
+= link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path, class: 'btn btn-default'
+
+.float-right
+  = link_to 'Export to Excel', params.to_unsafe_h.merge(format: :xlsx), class: 'btn btn-default'
+  = link_to 'Export to CSV', params.to_unsafe_h.merge(format: :xlsx), class: 'btn btn-default'
+
+table.table.table-striped.table-responsive-md
+  thead
+    tr
+<% attributes.each do |attribute| -%>
+      th <%= attribute.human_name %>
+<% end -%>
+      th
+      th
+      th
+
+  tbody
+    - @<%= plural_table_name %>.each do |item|
+      tr
+<% attributes.each do |attribute| -%>
+        td = item.<%= attribute.name %>
+<% end -%>
+        td = link_to 'View', item, class: 'btn btn-default'
+        td = link_to 'Edit', edit_<%= singular_table_name %>_path(item), class: 'btn btn-default'
+        td = link_to 'Delete', item, method: :delete, "data-confirm": 'Are you sure?', class: 'btn btn-danger'
+
+= paginate @<%= plural_table_name %>

@@ -1,0 +1,3 @@
+h1 Editing <%= name %>
+
+= render 'form', cancel_path: <%= singular_table_name %>_path(@<%= singular_table_name %>)

@@ -1,0 +1,3 @@
+h1 New <%= name.titleize %>
+
+= render 'form', cancel_path: <% index_helper %>

@@ -1,0 +1,12 @@
+h1 View <%= singular_table_name.titleize %>
+
+table.table.table-striped.table-responsive-md
+  tbody
+<% attributes.each do |attribute| -%>
+    tr
+      td.bold.text-right = <%= attribute.human_name %>:
+      td = @<%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+
+= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>)
+= link_to 'Back', <%= index_helper %>_path
