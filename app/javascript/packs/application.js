@@ -1,5 +1,6 @@
 import "./shared";
 import "./bootstrap_4_custom";
+import "./sidebar";
 
 require("@rails/activestorage").start()
 //require("@rails/actioncable").start()

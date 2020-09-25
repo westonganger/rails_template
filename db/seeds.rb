@@ -4,5 +4,7 @@ if User.all.empty?
     password: SITE_DATA[:admin_user][:password], 
     password_confirmation: SITE_DATA[:admin_user][:password],
     invitation_accepted_at: Time.now,
+    first_name: "John",
+    last_name: "Smith",
   )
 end

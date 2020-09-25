@@ -22,23 +22,25 @@ html.h-100 lang="en"
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'google_analytics', 'data-turbolinks-track': 'reload'
 
+    = render 'shared/icons', name: 'font-awesome-5'
+
   body.has-sticky-footer#page-top
     = render "shared/loader"
 
-    nav.navbar.bg-dark.bg-light.fixed-top
-      a.navbar-brand[href="/"]
-        = image_tag "sfwd_logo_alt.png", class: 'd-inline-block align-top', alt: "Logo", style: "max-height:45px;"
+    /nav.navbar.bg-dark.bg-light.fixed-top
+      a.navbar-brand href=(params[:controller] == "front_end" ? root_path : dashboard_path)
+        = image_tag "logo_alt.png", class: 'd-inline-block align-top', alt: "Logo", style: "max-height:45px;"
 
       ul.navbar-nav
         li.nav-link
           a.btn.btn-danger href=destroy_user_session_path data-method="delete" Sign Out
     
-    #push
+    /.navbar-push
     = render "shared/flash"
 
-    // TODO: Sidebar
-
-    #page-content
-      = yield
+    #page-content.dark-sidebar.toggled
+      = render 'shared/side_nav'
+      #main
+        = yield
 
     = render "shared/footer"

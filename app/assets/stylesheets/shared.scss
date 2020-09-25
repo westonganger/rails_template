@@ -6,7 +6,7 @@
 .navbar.fixed-top{
   overflow: auto;
   -webkit-overflow-scrolling: touch; // mobile safari
-  max-height: 90vh;
+  //max-height: 90vh;
 }
 
 $navbar-height: 70px;
@@ -20,7 +20,7 @@ body{
   display: flex;
   flex-direction: column;
 
-  #push{
+  .navbar-push{
     margin-top: $navbar-height;
   }
 
@@ -35,6 +35,6 @@ body{
   
   footer{
     margin-top: auto; // required for sticky footer, https://getbootstrap.com/docs/4.3/examples/sticky-footer-navbar/
-    height: $footer-height;
+    height: 40px;
   }
 }

@@ -7,10 +7,10 @@
         .form-group
           - if params[resource_name]
             - val = params[resource_name][:email]
+          - elsif Rails.env.development?
+            - val = SITE_DATA[:admin_user][:email]
           - elsif cookies[:email]
             - val = cookies[:email]
-          /- elsif Rails.env.development?
-            - val = SITE_DATA[:admin_user][:email]
           = f.email_field :email, autofocus: true, placeholder: 'Email Address', class: 'form-control', value: val 
 
         .form-group

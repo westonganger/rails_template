@@ -3,6 +3,9 @@
 class AddDeviseToUsers < ActiveRecord::Migration[6.0]
   def self.up
     create_table :users do |t|
+      t.string :first_name
+      t.string :last_name
+
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -32,9 +35,20 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.0]
       t.string   :unlock_token # Only if unlock strategy is :email or :both
       t.datetime :locked_at
 
+      ## Invitable
+      t.string     :invitation_token
+      t.datetime   :invitation_created_at
+      t.datetime   :invitation_sent_at
+      t.datetime   :invitation_accepted_at
+      t.integer    :invitation_limit
+      t.references :invited_by, polymorphic: true
+      t.integer    :invitations_count, default: 0
+      t.index      :invitations_count
+      t.index      :invitation_token, unique: true # for invitable
+      t.index      :invited_by_id
 
-      # Uncomment below if timestamps were not included in your original model.
       t.timestamps null: false
+      t.datetime :disabled_at
     end
 
     add_index :users, :email,                unique: true

@@ -18,13 +18,13 @@ html.h-100 lang="en"
 
     nav.navbar.bg-dark.bg-light.fixed-top
       a.navbar-brand[href="/"]
-        = image_tag "sfwd_logo_alt.png", class: 'd-inline-block align-top', alt: "Logo", style: "max-height:45px;"
+        = image_tag "logo_alt.png", class: 'd-inline-block align-top', alt: "Logo", style: "max-height:45px;"
 
       ul.navbar-nav
         li.nav-link
           a.btn.btn-primary href=dashboard_path Client Area
 
-    #push
+    .navbar-push
     = render "shared/flash"
 
     #page-content

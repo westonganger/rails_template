@@ -1,0 +1,136 @@
+nav#sidebar.sidebar-wrapper
+  a#toggle-sidebar.btn.btn-sm.btn-dark href="#" title="Toggle Sidebar Visibility"
+    i.fas.fa-bars
+
+  .sidebar-content
+    /.navbar-push
+    
+    .sidebar-brand
+      = image_tag "logo_alt.png", class: 'img-responsive'
+    .sidebar-header
+      .user-pic
+        img.img-responsive.img-rounded alt=("User picture") src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+      .user-info
+        span.user-name
+          strong = current_user.name
+        span.user-role Administrator
+        span.user-status
+          i.fa.fa-circle
+          span Online
+
+    .sidebar-search
+      div
+        .input-group
+          input.form-control.search-menu placeholder="Search..." type="text"
+          .input-group-append
+            span.input-group-text
+              i.fa.fa-search aria-hidden="true" 
+
+    .sidebar-menu
+      ul
+        li.header-menu
+          span General
+
+        li.sidebar-dropdown
+          a href="#" 
+            i.fa.fa-tachometer-alt
+            span Dashboard
+            span.badge.badge-pill.badge-warning New
+          .sidebar-submenu
+            ul
+              li
+                a href="#" 
+                  | Dashboard 1
+                  span.badge.badge-pill.badge-success Pro
+              li
+                a href="#"  Dashboard 2
+              li
+                a href="#"  Dashboard 3
+
+        li.sidebar-dropdown
+          a href="#" 
+            i.fa.fa-shopping-cart
+            span E-commerce
+            span.badge.badge-pill.badge-danger 3
+          .sidebar-submenu
+            ul
+              li
+                a href="#" 
+                  | Products
+              li
+                a href="#"  Orders
+              li
+                a href="#"  Credit cart
+
+        li.sidebar-dropdown
+          a href="#" 
+            i.far.fa-gem
+            span Components
+          .sidebar-submenu
+            ul
+              li
+                a href="#"  General
+              li
+                a href="#"  Panels
+              li
+                a href="#"  Tables
+              li
+                a href="#"  Icons
+              li
+                a href="#"  Forms
+
+        li.sidebar-dropdown
+          a href="#" 
+            i.fa.fa-chart-line
+            span Charts
+          .sidebar-submenu
+            ul
+              li
+                a href="#"  Pie chart
+              li
+                a href="#"  Line chart
+              li
+                a href="#"  Bar chart
+              li
+                a href="#"  Histogram
+
+        li.sidebar-dropdown
+          a href="#" 
+            i.fa.fa-globe
+            span Maps
+          .sidebar-submenu
+            ul
+              li
+                a href="#"  Google maps
+              li
+                a href="#"  Open street map
+
+        li.header-menu
+          span Extra
+        li
+          a href="#" 
+            i.fa.fa-book
+            span Documentation
+            span.badge.badge-pill.badge-primary Beta
+        li
+          a href="#" 
+            i.fa.fa-calendar
+            span Calendar
+        li
+          a href="#" 
+            i.fa.fa-folder
+            span Examples
+
+
+  .sidebar-footer
+    a href="#" 
+      i.fa.fa-bell
+      span.badge.badge-pill.badge-warning.notification 3
+    a href="#" 
+      i.fa.fa-envelope
+      span.badge.badge-pill.badge-success.notification 7
+    a href="#" 
+      i.fa.fa-cog
+      span.badge-sonar
+    a href="#" 
+      i.fa.fa-power-off

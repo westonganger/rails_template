@@ -32,7 +32,7 @@ class ApplicationRecord < ActiveRecord::Base
   
   ### Output all validation in dev/test for easier debugging
   def log_errors
-    if !SETTINGS[:is_production] && self.errors.any?
+    if !Rails.env.production? && self.errors.any?
       str = "Errors for #{self.class.name}"
       if id
         str += " (ID: #{self.id})"
