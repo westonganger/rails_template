@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   api = ->(request){ request.subdomain == 'api'}
   not_api = ->(request){ !api.call(request) }
 
+  is_admin = ->(request){ user_id = request.session['warden.user.user.key']&.first; User.with_role(:admin).find_by(id: user_id) if user_id }
+
   constraints api do
   end
 
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
     devise_for :users
 
     namespace :admin do
-      resource :users do
+      resources :users do
         get "enable"
         get "resend_invitation"
       end
@@ -19,8 +21,10 @@ Rails.application.routes.draw do
 
     get "/dashboard", to: "dashboard#index"
 
-    mount Blazer::Engine, at: "/admin/data_reporting"
-    mount Fastentry::Engine, at: "/admin/cache_manager"
+    constraints is_admin do
+      mount Blazer::Engine, at: "/admin/data_reporting"
+      mount Fastentry::Engine, at: "/admin/cache_manager"
+    end
 
     mount Sidekiq::Web => '/sidekiq'
 

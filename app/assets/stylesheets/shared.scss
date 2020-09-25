@@ -1,5 +1,6 @@
 //@import "actiontext";
-@import "./utility";
+@import "utility";
+@import "variables";
 
 /* Allow vertical scrolling on toggle nav */
 /* https://stackoverflow.com/questions/48833789/scrolling-in-sticky-top-navbar-bootstrap-4 */
@@ -8,9 +9,6 @@
   -webkit-overflow-scrolling: touch; // mobile safari
   //max-height: 90vh;
 }
-
-$navbar-height: 70px;
-$footer-height: 38px;
 
 html, body{
   height: 100%; // required for sticky footer
