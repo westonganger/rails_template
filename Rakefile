@@ -8,3 +8,7 @@ Rails.application.load_tasks
 ENV['COVERAGE'] = 'PartialSummary'
 #ENV['COVERAGE'] = 'BriefSummary'
 #ENV['COVERAGE'] = 'Summary'
+
+RuboCop::RakeTask.new do |task|
+  task.requires << 'rubocop-performance'
+end

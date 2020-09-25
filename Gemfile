@@ -40,6 +40,7 @@ gem 'pretender' # add ability to switch user, https://github.com/ankane/pretende
 ### Models / Data
 gem 'search_cop'
 gem 'paper_trail' # model versioning
+gem 'panko_serializer'
  
 ### Views / HTML Builders
 gem 'slim'
@@ -111,7 +112,7 @@ group :development do
 
   gem 'binding_of_caller'
   gem 'better_errors'
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console'
 
   #gem 'rack-mini-profiler'
   gem 'rack-mini-profiler', git: "https://github.com/westonganger/rack-mini-profiler.git", branch: "patch-1"
@@ -123,7 +124,12 @@ group :development do
   gem 'derailed_benchmarks' # bundle exec derailed bundle:mem
   gem 'database_consistency' # bundle exec database_consistency
   gem 'brakeman' # bundle exec brakeman 
-  gem 'rails-erd' # generate ERD diagrams
+  gem 'rails-erd', require: false # generate ERD diagrams
+
+  ### Code Style
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-performance', require: false
 
   ### Deployment
   gem 'capistrano'
@@ -145,9 +151,6 @@ group :test do
   #gem 'chromedriver-helper' # chrome driver
   gem 'geckodriver-helper' # firefox driver
 
-  # gem 'undercover' # Simple test coverage reporting, https://github.com/grodowski/undercover
-  # gem 'simplecov'
-  # gem 'simplecov-lcov'
   gem 'covered' # `COVERAGE=PartialSummary minitest`, https://github.com/ioquatix/covered
 
   #gem 'minitest-rails'

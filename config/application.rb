@@ -12,7 +12,7 @@ require "action_mailer/railtie"
 #require "action_mailbox/engine"
 #require "action_text/engine"
 require "action_view/railtie"
-#require "action_cable/engine"
+require "action_cable/engine"
 require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
@@ -54,6 +54,11 @@ module RailsStarterApp
     if !Rails.env.production?
       config.action_mailer.delivery_method = :smtp
       config.action_mailer.smtp_settings = { address: "localhost", port: 1025}
+    end
+
+    def build_time
+      @build_time ||= File.read('BUILD_TIME').lines.first.chomp rescue 'unknown'
+      @build_time ||= File.read('BUILD_TIME').lines.first.chomp.to_datetime rescue nil
     end
 
   end
