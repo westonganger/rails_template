@@ -10,7 +10,10 @@ Rails.application.routes.draw do
     devise_for :users
 
     namespace :admin do
-      resource :users, only: [:edit, :update]
+      resource :users do
+        get "enable"
+        get "resend_invitation"
+      end
       root to: 'dashboard#index'
     end
 

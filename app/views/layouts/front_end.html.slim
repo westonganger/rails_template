@@ -15,6 +15,7 @@ html.h-100 lang="en"
 
   body.has-sticky-footer#page-top
     = render "shared/loader"
+    = render "shared/bootswatch_theme_switcher"
 
     nav.navbar.bg-dark.bg-light.fixed-top
       a.navbar-brand[href="/"]
@@ -29,6 +30,5 @@ html.h-100 lang="en"
 
     #page-content
       = yield
-      = render "shared/admin_buttons"
 
     = render "shared/footer"

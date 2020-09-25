@@ -1,5 +1,5 @@
 if User.all.empty?
-  User.create!(
+  user = User.new(
     email: SITE_DATA[:admin_user][:email], 
     password: SITE_DATA[:admin_user][:password], 
     password_confirmation: SITE_DATA[:admin_user][:password],
@@ -7,4 +7,8 @@ if User.all.empty?
     first_name: "John",
     last_name: "Smith",
   )
+
+  user.save!
+
+  user.add_role(:admin)
 end

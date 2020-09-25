@@ -1,0 +1,23 @@
+- if current_user && current_user.has_role?(:admin) && Rails.env.development?
+  #bootswatch-theme-switcher style="position: fixed; z-index: 999; right: 15px; bottom: 15px; text-align: right"
+    input.form-control value="Theme Sampler" disabled=true style="width: 150px;"
+    select.form-control
+      option value="default" Default
+      - AppConfig::BOOTSWATCH_OPTIONS.each do |label, id|
+        option value=id = label
+
+  javascript: 
+    $("#bootswatch-theme-switcher select").change(function(){
+      var theme = $(this).val();
+
+      $("body link[href*='bootswatch']").remove();
+
+      if(theme !== "default"){
+        var el = document.createElement('link');
+
+        el.setAttribute("rel", "stylesheet");
+        el.setAttribute("href", "https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/"+theme+"/bootstrap.min.css");
+
+        $("body").append(el);
+      }
+    });

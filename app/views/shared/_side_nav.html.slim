@@ -1,4 +1,4 @@
-nav#sidebar.sidebar-wrapper
+nav#sidebar.sidebar-wrapper.bg-dark.text-light
   a#toggle-sidebar.btn.btn-sm.btn-dark href="#" title="Toggle Sidebar Visibility"
     i.fas.fa-bars
 
@@ -21,11 +21,12 @@ nav#sidebar.sidebar-wrapper
 
     .sidebar-search
       div
-        .input-group
-          input.form-control.search-menu placeholder="Search..." type="text"
-          .input-group-append
-            span.input-group-text
-              i.fa.fa-search aria-hidden="true" 
+        form action="/search" method="GET"
+          .input-group
+            input.form-control.search-menu placeholder="Search..." type="text"
+            .input-group-append
+              span.input-group-text
+                i.fa.fa-search aria-hidden="true" 
 
     .sidebar-menu
       ul
@@ -36,13 +37,13 @@ nav#sidebar.sidebar-wrapper
           a href="#" 
             i.fa.fa-tachometer-alt
             span Dashboard
-            span.badge.badge-pill.badge-warning New
+            /span.badge.badge-pill.badge-warning New
           .sidebar-submenu
             ul
               li
                 a href="#" 
                   | Dashboard 1
-                  span.badge.badge-pill.badge-success Pro
+                  /span.badge.badge-pill.badge-success Pro
               li
                 a href="#"  Dashboard 2
               li
@@ -52,12 +53,11 @@ nav#sidebar.sidebar-wrapper
           a href="#" 
             i.fa.fa-shopping-cart
             span E-commerce
-            span.badge.badge-pill.badge-danger 3
+            /span.badge.badge-pill.badge-danger 3
           .sidebar-submenu
             ul
               li
-                a href="#" 
-                  | Products
+                a href="#" Products
               li
                 a href="#"  Orders
               li
@@ -112,7 +112,7 @@ nav#sidebar.sidebar-wrapper
           a href="#" 
             i.fa.fa-book
             span Documentation
-            span.badge.badge-pill.badge-primary Beta
+            /span.badge.badge-pill.badge-primary Beta
         li
           a href="#" 
             i.fa.fa-calendar
@@ -122,16 +122,24 @@ nav#sidebar.sidebar-wrapper
             i.fa.fa-folder
             span Examples
 
+        li.header-menu
+          span Admin
+        li
+          a href=admin_users_path
+            i.fa.fa-users
+            span Users
+            /span.badge.badge-pill.badge-primary Beta
 
-  .sidebar-footer
-    a href="#" 
+
+  .sidebar-footer.bg-dark
+    a href="/alerts" title="Notifications"
       i.fa.fa-bell
-      span.badge.badge-pill.badge-warning.notification 3
-    a href="#" 
+      /span.badge.badge-pill.badge-warning.notification 3
+    a href="/messages" title="Messages"
       i.fa.fa-envelope
-      span.badge.badge-pill.badge-success.notification 7
-    a href="#" 
+      /span.badge.badge-pill.badge-success.notification 7
+    a href="/settings" title="Settings"
       i.fa.fa-cog
-      span.badge-sonar
-    a href="#" 
+      /span.badge-sonar
+    a href=destroy_user_session_path data-method="DELETE" title="Sign Out" data-confirm="Are you sure you want to sign out?"
       i.fa.fa-power-off
